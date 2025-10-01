@@ -11,7 +11,6 @@ tools:
     source: ibmi-system
     description: "Overall system performance statistics with CPU, memory, and I/O metrics"
     parameters: []
-    responseFormat: markdown
     statement: |
       SELECT * FROM TABLE(QSYS2.SYSTEM_STATUS(RESET_STATISTICS=>'YES',DETAILED_INFO=>'ALL')) X
 
@@ -115,20 +114,20 @@ tools:
       ORDER BY CPU_TIME DESC 
       FETCH FIRST :limit ROWS ONLY
 
-  execute_sql:
-    source: ibmi-system
-    description: "Execute arbitrary SQL statements against the IBM i database for data analysis and troubleshooting"
-    readOnlyHint: true
-    parameters:
-      - name: sql
-        type: string
-        description: "The SQL statement to execute"
-    statement: |
-      :sql
-    security:
-      readOnly: true
-      maxQueryLength: 15000
-      forbiddenKeywords: ["TRUNCATE", "FORMAT", "DELETE", "UPDATE", "DROP"]
+  # execute_sql:
+  #   source: ibmi-system
+  #   description: "Execute arbitrary SQL statements against the IBM i database for data analysis and troubleshooting"
+  #   readOnlyHint: true
+  #   parameters:
+  #     - name: sql
+  #       type: string
+  #       description: "The SQL statement to execute"
+  #   statement: |
+  #     :sql
+  #   security:
+  #     readOnly: true
+  #     maxQueryLength: 15000
+  #     forbiddenKeywords: ["TRUNCATE", "FORMAT", "DELETE", "UPDATE", "DROP"]
 
 toolsets:
   performance:
@@ -144,4 +143,4 @@ toolsets:
       - collection_services
       - collection_categories
       - active_job_info
-      - execute_sql
+      # - execute_sql
