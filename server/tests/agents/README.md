@@ -1,5 +1,7 @@
 # IBM i MCP Agent Examples
 
+⚠️ **These example scripts are deprecated and will be moved to the `client/` directory in a future release. Please refer to the [client/README.md](../../../client/README.md) for the latest instructions.** ⚠️
+
 This directory contains example AI agents that interact with the IBM i MCP Server.
 
 ## Quick Setup
